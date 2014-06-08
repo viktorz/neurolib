@@ -1,0 +1,4 @@
+neurolib
+========
+
+Neural Network courseware
