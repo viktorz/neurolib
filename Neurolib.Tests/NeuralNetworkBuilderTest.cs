@@ -28,7 +28,7 @@ namespace Neurolib.Tests
             NeuralNetworkBuilderTestDouble builder = new NeuralNetworkBuilderTestDouble();
             builder.CreateNew();
             NeuralNetwork network1 = builder.CurrentNeuralNetwork;
-            Func<double, double> func = x => x;
+            ActivationFunction func = ActivationFunctions.Identity;
             builder.AddInputLayer(3, func, false);
             Assert.AreEqual(1, network1.Layers.Count);
             Assert.IsNotNull(network1.InputLayer);
@@ -43,7 +43,7 @@ namespace Neurolib.Tests
             NeuralNetworkBuilderTestDouble builder = new NeuralNetworkBuilderTestDouble();
             builder.CreateNew();
             NeuralNetwork network1 = builder.CurrentNeuralNetwork;
-            Func<double, double> func = x => x;
+            ActivationFunction func = ActivationFunctions.Identity;
             builder.AddInputLayer(3, func, true);
             Assert.AreEqual(1, network1.Layers.Count);
             Assert.IsNotNull(network1.InputLayer);
@@ -58,7 +58,7 @@ namespace Neurolib.Tests
             NeuralNetworkBuilderTestDouble builder = new NeuralNetworkBuilderTestDouble();
             builder.CreateNew();
             NeuralNetwork network1 = builder.CurrentNeuralNetwork;
-            Func<double, double> func = x => x;
+            ActivationFunction func = ActivationFunctions.Identity;
             builder.AddInputLayer(3, func, true);
             AssertEx.AssertThrows<NeuralNetworkConfigurationException>(() => builder.AddInputLayer(2, func, true), "can't have 2 input layers");
         }
@@ -69,7 +69,7 @@ namespace Neurolib.Tests
             NeuralNetworkBuilderTestDouble builder = new NeuralNetworkBuilderTestDouble();
             builder.CreateNew();
             NeuralNetwork network1 = builder.CurrentNeuralNetwork;
-            Func<double, double> func = x => x;
+            ActivationFunction func = ActivationFunctions.Identity;
             builder.AddInputLayer(3, func, false)
                    .AddHiddenLayer(4, func, false);
 
@@ -88,7 +88,7 @@ namespace Neurolib.Tests
             NeuralNetworkBuilderTestDouble builder = new NeuralNetworkBuilderTestDouble();
             builder.CreateNew();
             NeuralNetwork network1 = builder.CurrentNeuralNetwork;
-            Func<double, double> func = x => x;
+            ActivationFunction func = ActivationFunctions.Identity;
             builder.AddInputLayer(3, func, false)
                    .AddHiddenLayer(4, func, true);
 
@@ -107,7 +107,7 @@ namespace Neurolib.Tests
             NeuralNetworkBuilderTestDouble builder = new NeuralNetworkBuilderTestDouble();
             builder.CreateNew();
             NeuralNetwork network1 = builder.CurrentNeuralNetwork;
-            Func<double, double> func = x => x;
+            ActivationFunction func = ActivationFunctions.Identity;
             AssertEx.AssertThrows<NeuralNetworkConfigurationException>(() => builder.AddHiddenLayer(2, func, true), "can't have only hidden layer");
 
         }
@@ -118,10 +118,10 @@ namespace Neurolib.Tests
             NeuralNetworkBuilderTestDouble builder = new NeuralNetworkBuilderTestDouble();
             builder.CreateNew();
             NeuralNetwork network1 = builder.CurrentNeuralNetwork;
-            Func<double, double> func1 = x => x;
-            Func<double, double> func2 = x => 2*x;
-            Func<double, double> func3 = x => 3*x;
-            Func<double, double> func4 = x => 4*x;
+            ActivationFunction func1 = new ActivationFunction(x => x, x => 1);
+            ActivationFunction func2 = new ActivationFunction(x => 2*x, x => 1);
+            ActivationFunction func3 = new ActivationFunction(x => 3*x, x => 1);
+            ActivationFunction func4 = new ActivationFunction(x => 4 * x, x => 1);
             builder.AddInputLayer(2, func1, false)
                    .AddHiddenLayer(3, func2, false)
                    .AddHiddenLayer(4, func3, false)
@@ -158,8 +158,8 @@ namespace Neurolib.Tests
             NeuralNetworkBuilderTestDouble builder = new NeuralNetworkBuilderTestDouble();
             builder.CreateNew();
             NeuralNetwork network1 = builder.CurrentNeuralNetwork;
-            Func<double, double> func1 = x => x;
-            Func<double, double> func2 = x => 2*x;
+            ActivationFunction func1 = new ActivationFunction(x => x, x => 1);
+            ActivationFunction func2 = new ActivationFunction(x => 2 * x, x => 1);
             builder.AddInputLayer(3, func1, false)
                    .AddOutputLayer(2, func2);
 
@@ -183,7 +183,7 @@ namespace Neurolib.Tests
             NeuralNetworkBuilderTestDouble builder = new NeuralNetworkBuilderTestDouble();
             builder.CreateNew();
             NeuralNetwork network1 = builder.CurrentNeuralNetwork;
-            Func<double, double> func = x => x;
+            ActivationFunction func = ActivationFunctions.Identity;
             AssertEx.AssertThrows<NeuralNetworkConfigurationException>(() => builder.AddOutputLayer(2, func), "can't have only output layer");
         }
 
@@ -193,7 +193,7 @@ namespace Neurolib.Tests
             NeuralNetworkBuilderTestDouble builder = new NeuralNetworkBuilderTestDouble();
             builder.CreateNew();
             NeuralNetwork network1 = builder.CurrentNeuralNetwork;
-            Func<double, double> func = x => x;
+            ActivationFunction func = ActivationFunctions.Identity;
             builder.AddInputLayer(3, func, false)
                    .AddOutputLayer(4, func);
 
@@ -206,7 +206,7 @@ namespace Neurolib.Tests
             NeuralNetworkBuilderTestDouble builder = new NeuralNetworkBuilderTestDouble();
             builder.CreateNew();
             NeuralNetwork network1 = builder.CurrentNeuralNetwork;
-            Func<double, double> func = x => x;
+            ActivationFunction func = ActivationFunctions.Identity;
             builder.AddInputLayer(3, func, false)
                    .AddOutputLayer(4, func);
 
@@ -219,10 +219,10 @@ namespace Neurolib.Tests
         {
             NeuralNetworkBuilderTestDouble builder = new NeuralNetworkBuilderTestDouble();
             builder.CreateNew()
-                   .AddInputLayer(2, x => x, false)
-                   .AddHiddenLayer(3, x => 2 * x, false)
-                   .AddHiddenLayer(4, x => 3 * x, false)
-                   .AddOutputLayer(1, x => x);
+                   .AddInputLayer(2, new ActivationFunction(x => x, x => 1), false)
+                   .AddHiddenLayer(3, new ActivationFunction(x => 2 * x, x => 1), false)
+                   .AddHiddenLayer(4, new ActivationFunction(x => 3 * x, x => 1), false)
+                   .AddOutputLayer(1, new ActivationFunction(x => 4 * x, x => 1));
             NeuralNetwork network = builder.CurrentNeuralNetwork;
 
             Assert.IsNotNull(network);
@@ -259,7 +259,7 @@ namespace Neurolib.Tests
         {
             NeuralNetworkBuilderTestDouble builder = new NeuralNetworkBuilderTestDouble();
             builder.CreateNew();
-            Func<double, double> func = x => x;
+            ActivationFunction func = ActivationFunctions.Identity;
             builder.AddInputLayer(3, func, false);
 
             AssertEx.AssertThrows<NeuralNetworkConfigurationException>(() => builder.GetNetwork(), "can't get not set up neural network");

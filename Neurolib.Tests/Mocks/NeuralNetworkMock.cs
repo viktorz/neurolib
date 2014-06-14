@@ -9,6 +9,13 @@ namespace Neurolib.Tests
 {
     internal class NeuralNetworkMock : NeuralNetwork
     {
+        public NeuralNetworkMock()
+            : base()
+        {
+            this.InputLayer = new NeuralNetworkLayer();
+            this.OutputLayer = new NeuralNetworkLayer();
+        }
+
         internal override void Initialize()
         {
             this.InitilizeIsCalled = true;

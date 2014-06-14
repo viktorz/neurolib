@@ -60,11 +60,18 @@ namespace Neurolib.Tests
             {
                 ActivationFunction = ActivationFunctions.Sigmoid,
                 Inputs = new double[] { 5, 5, 5 },
+                Errors = new double[] { double.MinValue, double.MinValue, double.MinValue } ,
                 Weights = new double[3, 4] 
                 { 
                     {5,5,5,5},
                     {5,5,5,5},
                     {5,5,5,5}
+                },
+                LastWeightDelta = new double[3, 4]
+                { 
+                    {0,0,0,0},
+                    {0,0,0,0},
+                    {0,0,0,0}
                 }
             });
             network.InputLayer = network.Layers[0];
@@ -72,19 +79,29 @@ namespace Neurolib.Tests
             {
                 ActivationFunction = ActivationFunctions.Sigmoid,
                 Inputs = new double[] { 1, 1, 1, 1 },
+                Errors = new double[] { double.MinValue, double.MinValue, double.MinValue, double.MinValue },
                 Weights = new double[4, 1] 
                 { 
                     {5},
                     {5},
                     {5},
                     {5}
+                },
+                LastWeightDelta = new double[4,1]
+                {
+                    {0},
+                    {0},
+                    {0},
+                    {0}
                 }
             });
             network.Layers.Add(new NeuralNetworkLayer()
             {
                 ActivationFunction = ActivationFunctions.Sigmoid,
                 Inputs = new double[] { 1 },
-                Weights = null
+                Errors = new double[] { double.MinValue },
+                Weights = null,
+                LastWeightDelta = null
             });
             network.OutputLayer = network.Layers.Last();
 

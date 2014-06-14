@@ -12,7 +12,6 @@ namespace Neurolib.Tests
         public NeuralNetworkBuilderTestDouble() :
             base()
         {
-
         }
 
         public NeuralNetwork CurrentNeuralNetwork 

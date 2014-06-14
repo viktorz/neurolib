@@ -52,7 +52,7 @@ namespace Neurolib.Imp
                     {
                         sum += currentLayer.Inputs[j] * currentLayer.Weights[j, i];
                     }
-                    nextLayer.Inputs[i] = currentLayer.ActivationFunction(sum);
+                    nextLayer.Inputs[i] = currentLayer.ActivationFunction.Forward(sum);
                 }
             }
             return outputLayer.Inputs;
@@ -73,12 +73,20 @@ namespace Neurolib.Imp
 
                 for (int i = 0; i < currentLayer.Inputs.Length; i++)
                 {
-                    for (int j = 0; j < nextLayer.Inputs.Length; j++)
+                    if (li < this.layers.Count - 1)
                     {
-                        currentLayer.Weights[i, j] = random.NextDouble() * 4 - 2;
+                        for (int j = 0; j < nextLayer.Inputs.Length; j++)
+                        {
+                            //currentLayer.Weights[i, j] = random.NextDouble() * 4 - 2;
+                            currentLayer.Weights[i, j] = random.NextDouble();
+                            currentLayer.LastWeightDelta[i, j] = 0.0;
+                        }
                     }
+
+                    currentLayer.Errors[i] = double.MinValue;
                 }
             }
         }
     }
 }
+

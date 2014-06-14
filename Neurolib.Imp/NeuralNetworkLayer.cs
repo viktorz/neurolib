@@ -10,7 +10,8 @@ namespace Neurolib.Imp
     {
         private double[] inputs;
         private double[,] weights;
-        private Func<double, double> activationFunction;
+        private double[] errors;
+        private ActivationFunction activationFunction;
 
         public NeuralNetworkLayer()
         {
@@ -28,7 +29,20 @@ namespace Neurolib.Imp
             set { weights = value; }
         }
 
-        internal Func<double, double> ActivationFunction
+        internal double[] Errors
+        {
+            get { return this.errors; }
+            set { this.errors = value; }
+        }
+
+        private double[,] lastWeightDelta;
+        public double[,] LastWeightDelta
+        {
+            get { return lastWeightDelta; }
+            set { lastWeightDelta = value; }
+        }
+
+        internal ActivationFunction ActivationFunction
         {
             get { return this.activationFunction; }
             set { this.activationFunction = value; }
