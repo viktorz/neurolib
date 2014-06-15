@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neurolib.Tests", "Neurolib.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neurolib.SimpleBackProp", "Neurolib.SimpleBackProp\Neurolib.SimpleBackProp.csproj", "{0A5A6EEA-5B25-493A-8D3F-74AB7806E428}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MNISTParser", "MNISTParser\MNISTParser.csproj", "{07CF9F54-CF21-426A-9C30-CCACF1313975}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphabetGuesser", "AlphabetGuesser\AlphabetGuesser.csproj", "{48A6CFFE-1B23-4448-805E-C86B509F7412}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,14 @@ Global
 		{0A5A6EEA-5B25-493A-8D3F-74AB7806E428}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A5A6EEA-5B25-493A-8D3F-74AB7806E428}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A5A6EEA-5B25-493A-8D3F-74AB7806E428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07CF9F54-CF21-426A-9C30-CCACF1313975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07CF9F54-CF21-426A-9C30-CCACF1313975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07CF9F54-CF21-426A-9C30-CCACF1313975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07CF9F54-CF21-426A-9C30-CCACF1313975}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48A6CFFE-1B23-4448-805E-C86B509F7412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48A6CFFE-1B23-4448-805E-C86B509F7412}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48A6CFFE-1B23-4448-805E-C86B509F7412}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48A6CFFE-1B23-4448-805E-C86B509F7412}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

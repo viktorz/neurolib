@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MNISTParser;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,6 +15,9 @@ namespace Neurolib.SimpleBackProp
         {
             //DemoTraining();
             AlphabetRecognition();
+            //MNISTRecognition();
+
+            //AlphabetRecognitionWithVariations();
 
             Console.ReadLine();
         }
@@ -30,295 +34,17 @@ namespace Neurolib.SimpleBackProp
             trainer.TrainNetwork(network, testInput, testOutput);
         }
 
+        private const double maxAllowedError = 0.0005;
+        private const double value_A = 0.01;
+
         private static void AlphabetRecognition()
         {
-            #region date definition
-            double[][] testInput = new double[][]
-            {
-                new double[] 
-                { 
-                    0, 1, 0, 
-                    1, 0, 1, 
-                    1, 1, 1, 
-                    1, 0, 1, 
-                    1, 0, 1
-                }, // A
-                new double[] 
-                {
-                    1, 1, 0,
-                    1, 0, 1,
-                    1, 1, 0,
-                    1, 0, 1,
-                    1, 1, 0
-                }, // B
-                new double[] 
-                {
-                    1, 1, 1,
-                    1, 0, 0,
-                    1, 0, 0,
-                    1, 0, 0,
-                    1, 1, 1
-                }, // C
-                new double[] 
-                { 
-                    1, 1, 0,
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 1, 0
-                }, // D
-                new double[] 
-                {
-                    1, 1, 1,
-                    1, 0, 0,
-                    1, 1, 1,
-                    1, 0, 0,
-                    1, 1, 1
-                }, // E
-                new double[]
-                {
-                    1, 1, 1,
-                    1, 0, 0,
-                    1, 1, 1,
-                    1, 0, 0,
-                    1, 0, 0
-                }, // F
-                new double[]
-                {
-                    1, 1, 1,
-                    1, 0, 0,
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 1, 1
-                }, // G
-                new double[]
-                {
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 1, 1,
-                    1, 0, 1,
-                    1, 0, 1
-                }, // H
-                new double[]
-                {
-                    1, 1, 1,
-                    0, 1, 0,
-                    0, 1, 0,
-                    0, 1, 0,
-                    1, 1, 1
-                }, // I
-                new double[]
-                {
-                    1, 1, 1,
-                    0, 1, 0,
-                    0, 1, 0,
-                    0, 1, 0,
-                    1, 1, 0
-                }, // J
-                new double[]
-                {
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 1, 0,
-                    1, 0, 1,
-                    1, 0, 1
-                }, // K
-                new double[]
-                {
-                    1, 0, 0,
-                    1, 0, 0,
-                    1, 0, 0,
-                    1, 0, 0,
-                    1, 1, 1
-                }, // L
-                new double[]
-                {
-                    1, 0, 1,
-                    1, 1, 1,
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 0, 1
-                }, // M
-                new double[]
-                {
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 1, 1,
-                    1, 1, 1,
-                    1, 0, 1
-                }, // N
-                new double[]
-                {
-                    1, 1, 1,
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 1, 1,
-                }, // O
-                new double[]
-                {
-                    1, 1, 1,
-                    1, 0, 1,
-                    1, 1, 1,
-                    1, 0, 0,
-                    1, 0, 0
-                }, //  P
-                new double[]
-                {
-                    1, 1, 1,
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 1, 1,
-                    0, 0, 1
-                }, // Q
-                new double[]
-                {
-                    1, 1, 1,
-                    1, 0, 1,
-                    1, 1, 1,
-                    1, 1, 0,
-                    1, 0, 1
-                }, // R
-                new double[]
-                {
-                    1, 1, 1,
-                    1, 0, 0,
-                    1, 1, 1,
-                    0, 0, 1,
-                    1, 1, 1
-                }, // S
-                new double[]
-                {
-                    1, 1, 1,
-                    0, 1, 0,
-                    0, 1, 0,
-                    0, 1, 0,
-                    0, 1, 0
-                }, // T
-                new double[]
-                {
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 1, 1
-                }, // U
-                new double[]
-                {
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 0, 1,
-                    0, 1, 0,
-                    0, 1, 0
-                }, // V
-                new double[]
-                {
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 0, 1,
-                    1, 1, 1,
-                    1, 0, 1,
-                }, // W
-                new double[]
-                {
-                    1, 0, 1,
-                    1, 0, 1,
-                    0, 1, 0,
-                    1, 0, 1,
-                    1, 0, 1
-                }, // X
-                new double[]
-                {
-                    1, 0, 1,
-                    1, 0, 1,
-                    0, 1, 0,
-                    0, 1, 0,
-                    0, 1, 0
-                }, // Y
-                new double[]
-                {
-                    1, 1, 1,
-                    0, 0, 1,
-                    0, 1, 0,
-                    1, 0, 0,
-                    1, 1, 1
-                }, // Z
-                /*
-                new double[]
-                {
-                }, // 1
-                new double[]
-                {
-                }, // 2 
-                new double[]
-                {
-                }, // 3
-                new double[]
-                {
-                }, // 4
-                new double[]
-                {
-                }, // 5
-                new double[]
-                {
-                }, // 6
-                new double[]
-                {
-                }, // 7
-                new double[]
-                {
-                }, // 8
-                new double[]
-                {
-                }, // 9
-                // Zero is covered by "o"
-                */
-            };
-            double[][] testOutput = new double[][]
-            {
-                new double[] { 0.01 }, // A
-                new double[] { 0.02 }, // B
-                new double[] { 0.03 }, // C
-                new double[] { 0.04 }, // D
-                new double[] { 0.05 }, // E
-                new double[] { 0.06 }, // F
-                new double[] { 0.07 }, // G
-                new double[] { 0.08 }, // I
-                new double[] { 0.09 }, // J
-                new double[] { 0.10 }, // K
-                new double[] { 0.11 }, // L
-                new double[] { 0.12 }, // M
-                new double[] { 0.13 }, // N
-                new double[] { 0.14 }, // O
-                new double[] { 0.15 }, // P
-                new double[] { 0.16 }, // Q
-                new double[] { 0.17 }, // R
-                new double[] { 0.18 }, // S
-                new double[] { 0.19 }, // T
-                new double[] { 0.20 }, // U
-                new double[] { 0.21 }, // V
-                new double[] { 0.22 }, // W
-                new double[] { 0.23 }, // X 
-                new double[] { 0.24 }, // Y
-                new double[] { 0.25 }, // Z 
-                new double[] { 0.26 }, // H
-                /*
-                new double[] { 0. }, // 1
-                new double[] { 0. }, // 2 
-                new double[] { 0. }, // 3
-                new double[] { 0. }, // 4
-                new double[] { 0. }, // 5
-                new double[] { 0. }, // 6
-                new double[] { 0. }, // 7
-                new double[] { 0. }, // 8
-                new double[] { 0. }, // 9
-                 */
-            };
-            #endregion
+            double[][] testInput = AlphabetData.Samples.Select(s => s.Input).ToArray();
+            double[][] testOutput = AlphabetData.Samples.Select(s => new double[] { 2*s.Output }).ToArray();
 
             BackPropNeuralNetwork network = new BackPropNeuralNetwork(15, 20, 1);
             network.Initialize();
-            BackPropNeuralNetworkTrainer trainer = new BackPropNeuralNetworkTrainer(1000000, 0.3, 0.1, 0.004);
+            BackPropNeuralNetworkTrainer trainer = new BackPropNeuralNetworkTrainer(1000000, 0.3, 0.1, maxAllowedError);
 
             if (trainer.TrainNetwork(network, testInput, testOutput))
             {
@@ -341,6 +67,133 @@ namespace Neurolib.SimpleBackProp
                 double[] result3 = newNetwork.Run(testInput[20]); // U - 20
                 double[] result4 = newNetwork.Run(testInput[25]); // H - 26
             }
+        }
+
+        private static void MNISTRecognition()
+        {
+            const string mnistDataPath = @"..\..\..\MNIST data";
+            Parser parser = new Parser();
+
+            var trainingData = parser.ParseTrainingData(mnistDataPath);
+
+            double[][] testInput = new double[trainingData.Length][];
+            double[][] testOutput = new double[trainingData.Length][];
+
+            for (int i = 0; i < trainingData.Length; i++)
+            {
+                Image image = trainingData[i];
+                testOutput[i] = new double[] { image.label };
+                testInput[i] = image.pixelData.Select(v => v * 1.0).ToArray();
+            }
+
+            BackPropNeuralNetwork network = new BackPropNeuralNetwork(784, 300, 1); // 28 x 28
+            network.Initialize();
+            BackPropNeuralNetworkTrainer trainer = new BackPropNeuralNetworkTrainer(10000, 0.7, 0.2, 0.1);
+            DateTime start = DateTime.Now;
+            if (trainer.TrainNetwork(network, testInput, testOutput))
+            {
+                var duration = DateTime.Now - start;
+                Console.WriteLine("Network is trained! Elapsed " +duration.ToString());
+
+                string fileName = "MNISTRecognition_" + DateTime.Now.ToString("yyMMdd-HHmmss") + ".nnetwork";
+                using (Stream stream = File.Create(fileName))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    formatter.Serialize(stream, network);
+                }
+            }
+            else
+            {
+                var duration = DateTime.Now - start;
+                Console.WriteLine("Network is NOT trained! Elapsed " + duration.ToString());
+            }
+        }
+
+        private static void AlphabetRecognitionWithVariations()
+        {
+            string fileName = @"AlphabetRecognition_140615-024748.nnetwork";
+            BackPropNeuralNetwork newNetwork;
+            using (Stream stream = File.OpenRead(fileName))
+            {
+                BinaryFormatter formetter = new BinaryFormatter();
+                newNetwork = (BackPropNeuralNetwork)formetter.Deserialize(stream);
+            }
+
+            double[][] testInput = new double[][]
+            {
+                new double[] 
+                { 
+                    0, 1, 0, 
+                    1, 0, 1, 
+                    1, 1, 1, 
+                    1, 0, 1, 
+                    1, 0, 1
+                }, // A
+                new double[] 
+                { 
+                    1, 1, 0, 
+                    1, 0, 1, 
+                    1, 1, 1, 
+                    1, 0, 1, 
+                    1, 0, 1
+                }, // A
+                new double[] 
+                { 
+                    0, 1, 0, 
+                    1, 0, 1, 
+                    1, 0, 1, 
+                    1, 0, 1, 
+                    1, 0, 1
+                }, // A
+                new double[] 
+                { 
+                    0, 1, 0, 
+                    1, 0, 1, 
+                    1, 1, 1, 
+                    1, 0, 1, 
+                    0, 0, 1
+                }, // A
+                new double[] 
+                { 
+                    0, 1, 0, 
+                    1, 0, 1, 
+                    1, 1, 1, 
+                    1, 0, 1, 
+                    0, 0, 0
+                }, // A
+                new double[] 
+                { 
+                    0, 1, 0, 
+                    1, 0, 1, 
+                    1, 1, 1, 
+                    0, 0, 0, 
+                    1, 0, 1
+                }, // A
+            };
+
+            var etalon = GetMappedCharacter(newNetwork.Run(testInput[0]));
+            var result2 = GetMappedCharacter(newNetwork.Run(testInput[1]));
+            var result3 = GetMappedCharacter(newNetwork.Run(testInput[2]));
+            var result4 = GetMappedCharacter(newNetwork.Run(testInput[3]));
+            var result5 = GetMappedCharacter(newNetwork.Run(testInput[4]));
+            var result6 = GetMappedCharacter(newNetwork.Run(testInput[5]));
+        }
+
+        private static char GetMappedCharacter(double[] raw)
+        {
+            double v = raw[0];
+            double error = 0.005;
+            
+            var c = (from e in AlphabetData.Samples
+                       let min = e.Output - error
+                       let max = e.Output + error
+                       where v >= min && v <= max
+                       select e).FirstOrDefault();
+
+            if (c == null)
+                return '?';
+
+            return c.Letter;
         }
     }
 }

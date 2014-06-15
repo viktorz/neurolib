@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,13 +31,15 @@ namespace Neurolib.SimpleBackProp
             double[] currentInput;
             double[] targetOutput;
             double[] sampleErrors = new double[inputValues.Length];
+            Stopwatch watch = new Stopwatch();
             for (int iteration = 0; iteration < maxIterations; iteration++)
             {
                 if (iteration % 20 == 0)
                 {
+                    watch.Restart();
                     // TODO: broadcast progress
-                    Console.WriteLine("Training iteration " + iteration);
-                    Console.WriteLine("Errors: "+string.Join("  ", sampleErrors));
+                    Console.Write("Training iteration " + iteration + "...");
+                    //Console.WriteLine("Errors: "+string.Join("  ", sampleErrors));
                 }
 
                 bool allClear = true;
@@ -54,6 +57,12 @@ namespace Neurolib.SimpleBackProp
                         allClear = false;
                         network.UpdateWeights(targetOutput, this.learningRate, this.momentum);
                     }
+                }
+
+                if (iteration % 20 == 0)
+                {
+                    watch.Stop();
+                    Console.WriteLine("\b\b\b took "+watch.Elapsed.ToString());
                 }
 
                 if (allClear)
