@@ -89,9 +89,15 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="TrainedNetworks\ok-2x-AlphabetRecognition_140615-210959.nnetwork" />
-    <None Include="TrainedNetworks\overtrained-AlphabetRecognition_140615-213549.nnetwork" />
-    <None Include="TrainedNetworks\strict-0-0005e-AlphabetRecognition_140615-213828.nnetwork" />
+    <None Include="TrainedNetworks\ok-2x-AlphabetRecognition_140615-210959.nnetwork">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TrainedNetworks\overtrained-AlphabetRecognition_140615-213549.nnetwork">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TrainedNetworks\strict-0-0005e-AlphabetRecognition_140615-213828.nnetwork">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Neurolib.SimpleBackProp\Neurolib.SimpleBackProp.csproj">
