@@ -13,25 +13,15 @@ namespace Neurolib.SimpleBackProp
     {
         public static void Main()
         {
-            //DemoTraining();
             AlphabetRecognition();
-            //MNISTRecognition();
 
-            //AlphabetRecognitionWithVariations();
+            /* Unused spike methods - ignore them
+            DemoTraining();
+            MNISTRecognition();
+            AlphabetRecognitionWithVariations();
+            */
 
             Console.ReadLine();
-        }
-
-        private static void DemoTraining()
-        {
-            double[][] testInput = new double[1][] { new double[] { 1.0, -2.0, 3.0 } };
-            double[][] testOutput = new double[1][] { new double[] { 0.1234, 0.8765 } };
-
-            BackPropNeuralNetwork network = new BackPropNeuralNetwork(3, 4, 2);
-            network.Initialize();
-            BackPropNeuralNetworkTrainer trainer = new BackPropNeuralNetworkTrainer(1000000, 0.3, 0.1, 0.00001);
-
-            trainer.TrainNetwork(network, testInput, testOutput);
         }
 
         private const double maxAllowedError = 0.0005;
@@ -44,7 +34,7 @@ namespace Neurolib.SimpleBackProp
 
             BackPropNeuralNetwork network = new BackPropNeuralNetwork(15, 20, 1);
             network.Initialize();
-            BackPropNeuralNetworkTrainer trainer = new BackPropNeuralNetworkTrainer(1000000, 0.3, 0.1, maxAllowedError);
+            BackPropNeuralNetworkTrainer trainer = new BackPropNeuralNetworkTrainer(100000, 0.3, 0.1, maxAllowedError);
 
             if (trainer.TrainNetwork(network, testInput, testOutput))
             {
@@ -61,12 +51,20 @@ namespace Neurolib.SimpleBackProp
                     BinaryFormatter formetter = new BinaryFormatter();
                     newNetwork = (BackPropNeuralNetwork)formetter.Deserialize(stream);
                 }
-
-                double[] result1 = newNetwork.Run(testInput[1]);  // B - 2
-                double[] result2 = newNetwork.Run(testInput[10]); // K - 10
-                double[] result3 = newNetwork.Run(testInput[20]); // U - 20
-                double[] result4 = newNetwork.Run(testInput[25]); // H - 26
             }
+        }
+
+
+        private static void DemoTraining()
+        {
+            double[][] testInput = new double[1][] { new double[] { 1.0, -2.0, 3.0 } };
+            double[][] testOutput = new double[1][] { new double[] { 0.1234, 0.8765 } };
+
+            BackPropNeuralNetwork network = new BackPropNeuralNetwork(3, 4, 2);
+            network.Initialize();
+            BackPropNeuralNetworkTrainer trainer = new BackPropNeuralNetworkTrainer(1000000, 0.3, 0.1, 0.00001);
+
+            trainer.TrainNetwork(network, testInput, testOutput);
         }
 
         private static void MNISTRecognition()

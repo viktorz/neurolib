@@ -57,8 +57,6 @@ namespace AlphabetGuesser
         {
             Button btn = sender as Button;
             btn.IsEnabled = false;
-            //string fileName = @"AlphabetRecognition_140615-024748.nnetwork";
-            //string fileName = @"AlphabetRecognition_140615-210959.nnetwork";
             try
             {
                 Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();

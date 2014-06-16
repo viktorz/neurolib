@@ -10,32 +10,6 @@ namespace Neurolib.SimpleBackProp
     {
         public static Sample[] Samples = new Sample[]
         {
-            //new Sample()
-            //{
-            //    Input = new double[] 
-            //    { 
-            //        0, 0, 0, 
-            //        0, 0, 0, 
-            //        0, 0, 0, 
-            //        0, 0, 0, 
-            //        0, 0, 0
-            //    },
-            //    Output = 0.0,
-            //    Letter = ' ',
-            //},
-            //new Sample()
-            //{
-            //    Input = new double[] 
-            //    { 
-            //        1, 1, 1, 
-            //        1, 1, 1, 
-            //        1, 1, 1, 
-            //        1, 1, 1, 
-            //        1, 1, 1
-            //    },
-            //    Output = 0.30,
-            //    Letter = '!',
-            //},
             new Sample()
             {
                 Input = new double[] 
@@ -376,7 +350,7 @@ namespace Neurolib.SimpleBackProp
             },
         };
 
-        #region date definition
+        #region numbers definition
         /*
         double[][] testInput = new double[][]
             {

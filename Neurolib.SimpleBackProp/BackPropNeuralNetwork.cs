@@ -28,9 +28,6 @@ namespace Neurolib.SimpleBackProp
         private double[] oGradients;
         private double[,] hoPreviousWeightDeltas;
 
-        //Func<double, double> activationForward = x => 1 / (1 - Math.Pow(Math.E, -x));
-        //Func<double, double> activationReverse = y => y * (1 - y);
-
         public BackPropNeuralNetwork(int numInput, int numHidden, int numOutput)
         {
             numberOfInput = numInput;
