@@ -89,13 +89,16 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="TrainedNetworks\ok-2x-AlphabetRecognition_140615-210959.nnetwork">
+    <None Include="TrainedNetworks\e0-000005_AlphabetRecognition_140617-131152.nnetwork">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TrainedNetworks\overtrained-AlphabetRecognition_140615-213549.nnetwork">
+    <None Include="TrainedNetworks\e0-00005_AlphabetRecognition_140617-130954.nnetwork">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TrainedNetworks\strict-0-0005e-AlphabetRecognition_140615-213828.nnetwork">
+    <None Include="TrainedNetworks\e0-005_AlphabetRecognition_140615-210959.nnetwork">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TrainedNetworks\e0-0005_AlphabetRecognition_140615-213828.nnetwork">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

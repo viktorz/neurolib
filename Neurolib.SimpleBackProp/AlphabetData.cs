@@ -20,7 +20,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 1, 
                     1, 0, 1
                 },
-                Output = 0.01,
+                Output = 0.02,
                 Letter = 'A',
             },
             new Sample()
@@ -33,7 +33,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 1,
                     1, 1, 0
                 },
-                Output = 0.02,
+                Output = 0.04,
                 Letter = 'B',
             },
             new Sample()
@@ -46,7 +46,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 0,
                     1, 1, 1
                 },
-                Output = 0.03,
+                Output = 0.06,
                 Letter = 'C',
             },
             new Sample()
@@ -59,7 +59,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 1,
                     1, 1, 0
                 },
-                Output = 0.04,
+                Output = 0.08,
                 Letter = 'D',
             },
             new Sample()
@@ -72,7 +72,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 0,
                     1, 1, 1
                 },
-                Output = 0.05,
+                Output = 0.10,
                 Letter = 'E',
             },
             new Sample()
@@ -85,7 +85,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 0,
                     1, 0, 0
                 },
-                Output = 0.06,
+                Output = 0.12,
                 Letter = 'F',
             },
             new Sample()
@@ -98,7 +98,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 1,
                     1, 1, 1
                 },
-                Output = 0.07,
+                Output = 0.14,
                 Letter = 'G',
             },
             new Sample()
@@ -111,7 +111,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 1,
                     1, 0, 1
                 },
-                Output = 0.26,
+                Output = 0.52,
                 Letter = 'H',
             },
             new Sample()
@@ -124,7 +124,7 @@ namespace Neurolib.SimpleBackProp
                     0, 1, 0,
                     1, 1, 1
                 },
-                Output = 0.08,
+                Output = 0.16,
                 Letter = 'I',
             },
             new Sample()
@@ -137,7 +137,7 @@ namespace Neurolib.SimpleBackProp
                     0, 1, 0,
                     1, 1, 0
                 },
-                Output = 0.09,
+                Output = 0.18,
                 Letter = 'J',
             },
             new Sample()
@@ -150,7 +150,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 1,
                     1, 0, 1
                 },
-                Output = 0.10,
+                Output = 0.20,
                 Letter = 'K',
             },
             new Sample()
@@ -163,7 +163,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 0,
                     1, 1, 1
                 },
-                Output = 0.11,
+                Output = 0.22,
                 Letter = 'L',
             },
             new Sample()
@@ -176,7 +176,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 1,
                     1, 0, 1
                 },
-                Output = 0.12,
+                Output = 0.24,
                 Letter = 'M',
             },
             new Sample()
@@ -189,7 +189,7 @@ namespace Neurolib.SimpleBackProp
                     1, 1, 1,
                     1, 0, 1
                 },
-                Output = 0.13,
+                Output = 0.26,
                 Letter = 'N',
             },
             new Sample()
@@ -202,7 +202,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 1,
                     1, 1, 1,
                 },
-                Output = 0.14,
+                Output = 0.28,
                 Letter = 'O',
             },
             new Sample()
@@ -215,7 +215,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 0,
                     1, 0, 0
                 },
-                Output = 0.15,
+                Output = 0.30,
                 Letter = 'P',
             },
             new Sample()
@@ -228,7 +228,7 @@ namespace Neurolib.SimpleBackProp
                     1, 1, 1,
                     0, 0, 1
                 },
-                Output = 0.16,
+                Output = 0.32,
                 Letter = 'Q',
             },
             new Sample()
@@ -241,7 +241,7 @@ namespace Neurolib.SimpleBackProp
                     1, 1, 0,
                     1, 0, 1
                 },
-                Output = 0.17,
+                Output = 0.34,
                 Letter = 'R',
             },
             new Sample()
@@ -254,7 +254,7 @@ namespace Neurolib.SimpleBackProp
                     0, 0, 1,
                     1, 1, 1
                 },
-                Output = 0.18,
+                Output = 0.36,
                 Letter = 'S',
             },
             new Sample()
@@ -267,7 +267,7 @@ namespace Neurolib.SimpleBackProp
                     0, 1, 0,
                     0, 1, 0
                 },
-                Output = 0.19,
+                Output = 0.38,
                 Letter = 'T',
             },
             new Sample()
@@ -280,7 +280,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 1,
                     1, 1, 1
                 },
-                Output = 0.20,
+                Output = 0.40,
                 Letter = 'U',
             },
             new Sample()
@@ -293,7 +293,7 @@ namespace Neurolib.SimpleBackProp
                     0, 1, 0,
                     0, 1, 0
                 },
-                Output = 0.21,
+                Output = 0.42,
                 Letter = 'V',
             },
             new Sample()
@@ -306,7 +306,7 @@ namespace Neurolib.SimpleBackProp
                     1, 1, 1,
                     1, 0, 1,
                 },
-                Output = 0.22,
+                Output = 0.44,
                 Letter = 'W',
             },
             new Sample()
@@ -319,7 +319,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 1,
                     1, 0, 1
                 },
-                Output = 0.23,
+                Output = 0.46,
                 Letter = 'X',
             },
             new Sample()
@@ -332,7 +332,7 @@ namespace Neurolib.SimpleBackProp
                     0, 1, 0,
                     0, 1, 0
                 },
-                Output = 0.24,
+                Output = 0.48,
                 Letter = 'Y',
             },
             new Sample()
@@ -345,7 +345,7 @@ namespace Neurolib.SimpleBackProp
                     1, 0, 0,
                     1, 1, 1
                 },
-                Output = 0.25,
+                Output = 0.50,
                 Letter = 'Z',
             },
         };

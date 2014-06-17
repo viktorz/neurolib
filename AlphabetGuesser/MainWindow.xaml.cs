@@ -1,29 +1,17 @@
 ﻿using Neurolib.SimpleBackProp;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AlphabetGuesser
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private BackPropNeuralNetwork network = null;
         private CheckBox[] checkBoxes = new CheckBox[15];
+        private const double defaultThreshold = 0.0005;
 
         public MainWindow()
         {
@@ -42,7 +30,7 @@ namespace AlphabetGuesser
             double error;
             if (double.TryParse(txtError.Text, out error) == false)
             {
-                error = 0.0005;
+                error = defaultThreshold;
                 txtError.Text = error.ToString();
             }
 
@@ -50,7 +38,7 @@ namespace AlphabetGuesser
             lblLetter.Text = letter.ToString();
             lblRawValue.Text = result[0].ToString();
             Sample smpl = AlphabetData.Samples.FirstOrDefault(s=>s.Letter == letter);
-            lblDiff.Text = (smpl != null ? 2*smpl.Output - result[0] : double.NaN).ToString();
+            lblDiff.Text = (smpl != null ? smpl.Output - result[0] : double.NaN).ToString();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -71,6 +59,7 @@ namespace AlphabetGuesser
                         BinaryFormatter formetter = new BinaryFormatter();
                         network = (BackPropNeuralNetwork)formetter.Deserialize(stream);
                     }
+                    lblStatus.Text = "Loaded " + new FileInfo(dlg.FileName).Name;
                 }
             }
             finally
@@ -81,7 +70,7 @@ namespace AlphabetGuesser
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            txtError.Text = (0.005).ToString();
+            txtError.Text = (defaultThreshold).ToString();
 
             int index = 0;
             for (int ri = 0; ri < 5; ri++)
@@ -110,8 +99,8 @@ namespace AlphabetGuesser
             double v = raw[0];
 
             var c = (from e in AlphabetData.Samples
-                     let min = 2*e.Output - error
-                     let max = 2*e.Output + error
+                     let min = e.Output - error
+                     let max = e.Output + error
                      where v >= min && v <= max
                      select e).FirstOrDefault();
 

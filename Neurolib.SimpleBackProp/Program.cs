@@ -1,11 +1,8 @@
-﻿using MNISTParser;
+﻿//using MNISTParser;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Neurolib.SimpleBackProp
 {
@@ -21,16 +18,17 @@ namespace Neurolib.SimpleBackProp
             AlphabetRecognitionWithVariations();
             */
 
+            Console.WriteLine("Press ENTER to exit...");
             Console.ReadLine();
         }
 
-        private const double maxAllowedError = 0.0005;
+        private const double maxAllowedError = 0.000005;
         private const double value_A = 0.01;
 
         private static void AlphabetRecognition()
         {
             double[][] testInput = AlphabetData.Samples.Select(s => s.Input).ToArray();
-            double[][] testOutput = AlphabetData.Samples.Select(s => new double[] { 2*s.Output }).ToArray();
+            double[][] testOutput = AlphabetData.Samples.Select(s => new double[] { s.Output }).ToArray();
 
             BackPropNeuralNetwork network = new BackPropNeuralNetwork(15, 20, 1);
             network.Initialize();
@@ -54,7 +52,7 @@ namespace Neurolib.SimpleBackProp
             }
         }
 
-
+        /*
         private static void DemoTraining()
         {
             double[][] testInput = new double[1][] { new double[] { 1.0, -2.0, 3.0 } };
@@ -193,5 +191,6 @@ namespace Neurolib.SimpleBackProp
 
             return c.Letter;
         }
+        */
     }
 }
